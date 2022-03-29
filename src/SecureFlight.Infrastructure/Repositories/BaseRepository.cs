@@ -24,10 +24,19 @@ namespace SecureFlight.Infrastructure.Repositories
             return await _context.Set<TEntity>().ToListAsync();
         }
 
+        public TEntity Save(TEntity entity)
+        {
+            var entry = _context.Entry(entity);
+            entry.State = EntityState.Added;
+            _context.SaveChanges();
+            return entity;
+        }
+
         public TEntity Update(TEntity entity)
         {
             var entry = _context.Entry(entity);
             entry.State = EntityState.Modified;
+            _context.SaveChanges();
             return entity;
         }
     }

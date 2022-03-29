@@ -12,5 +12,7 @@ namespace SecureFlight.Core.Interfaces
         Task<IReadOnlyList<TEntity>> GetAllAsync();
 
         TEntity Update(TEntity entity);
+
+        TEntity Save(TEntity entity);
     }
 }
